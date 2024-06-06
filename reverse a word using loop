@@ -1,0 +1,16 @@
+def reverse_string(word):
+    reversed_word = ""
+    for i in range(len(word) - 1, -1, -1):
+        reversed_word += word[i]
+    return reversed_word
+
+# Sample Input and Output
+input_string = "TEMPLE"
+print("Reverse String:", reverse_string(input_string))
+
+# Test cases
+test_cases = ["SIGN UP", "AT-LEAST", "1245", "!@#$%", "145*999=144855"]
+for test in test_cases:
+    print("Original String:", test)
+    print("Reversed String:", reverse_string(test))
+    print()
