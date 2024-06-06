@@ -1,0 +1,27 @@
+def reverse_number(num):
+    # Convert the number to string to process each digit
+    num_str = str(num)
+    reversed_str = ""
+    
+    # Traverse the string in reverse order and append to reversed_str
+    for char in num_str[::-1]:
+        reversed_str += char
+    
+    # Convert the reversed string back to an integer
+    if num_str[0] == '-':
+        return int('-' + reversed_str[:-1])  # Handle negative numbers
+    return int(reversed_str)
+
+def main():
+    input_number = input("Enter the number: ")
+    
+    try:
+        # Convert input to integer to validate if it's a number
+        num = int(input_number)
+        reversed_num = reverse_number(num)
+        print(f"Reverse Number: {reversed_num}")
+    except ValueError:
+        print("Invalid input. Please enter a valid integer.")
+
+# Sample Input and Output
+main()
