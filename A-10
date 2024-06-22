@@ -1,0 +1,12 @@
+def reverse_string(input_string):
+    reversed_string = ""
+    for char in input_string:
+        reversed_string = char + reversed_string
+    return reversed_string
+
+# Test cases
+test_cases = ["TEMPLE", "SIGN UP", "AT-LEAST", "1245", "!@#$%", "145*999=144855"]
+
+for test in test_cases:
+    print(f"Original String: {test}")
+    print(f"Reversed String: {reverse_string(test)}\n")
