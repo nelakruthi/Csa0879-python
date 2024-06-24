@@ -1,0 +1,39 @@
+def sort_names(names, order):
+    """Sort a list of names in ascending or descending order."""
+    if order.upper() == 'A':
+        return sorted(names)
+    elif order.upper() == 'D':
+        return sorted(names, reverse=True)
+    else:
+        raise ValueError("Order must be 'A' for ascending or 'D' for descending")
+
+def main():
+    # Sample Input
+    input_names = "Banana, Carrot, Radish, Apple Jack"
+    order = "A"  # Change this to "D" for descending order
+
+    # Split the input string into a list of names
+    names = [name.strip() for name in input_names.split(',')]
+
+    # Sort the names based on the given order
+    sorted_names = sort_names(names, order)
+
+    # Print the sorted names
+    print(" ".join(sorted_names))
+
+if __name__ == "__main__":
+    main()
+
+# Test the program with different inputs
+test_cases = [
+    ("Banana, Carrot, Radish, Apple Jack", "A"),
+    ("Banana, Carrot, Radish, Apple Jack", "D"),
+    ("Zebra, Lion, Tiger, Elephant", "A"),
+    ("Zebra, Lion, Tiger, Elephant", "D")
+]
+
+for i, (input_names, order) in enumerate(test_cases):
+    print(f"Test case {i+1}:")
+    names = [name.strip() for name in input_names.split(',')]
+    sorted_names = sort_names(names, order)
+    print(" ".join(sorted_names))
