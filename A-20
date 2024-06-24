@@ -1,0 +1,26 @@
+def print_multiplication_table(M, N):
+    if N >= 0:
+        for i in range(1, N + 1):
+            print(f"{i}x{M}={i * M}")
+    else:
+        for i in range(-1, N - 1, -1):
+            print(f"{i}x{M}={i * M}")
+
+# Sample Input
+M = 4
+N = 5
+print("Sample Output:")
+print_multiplication_table(M, N)
+
+# Test cases
+test_cases = [
+    (6, -3),
+    (-3, 5),
+    (4, 0),
+    (0, 0),
+    (-5, -5)
+]
+
+for i, (M, N) in enumerate(test_cases):
+    print(f"\nTest case {i+1}: M = {M}, N = {N}")
+    print_multiplication_table(M, N)
