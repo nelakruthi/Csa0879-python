@@ -1,0 +1,30 @@
+def reverse_words(s):
+    # Split the input string into a list of words
+    words = s.split()
+
+    # Reverse the order of words
+    reversed_words = words[::-1]
+
+    # Join the reversed words into a single string
+    reversed_string = " ".join(reversed_words)
+
+    return reversed_string
+
+# Sample Input
+s = "the sky is blue"
+print(f"Input: \"{s}\"")
+output = reverse_words(s)
+print(f"Output: \"{output}\"")
+
+# Test cases
+test_cases = [
+    "hello world",
+    "python is awesome",
+    "  coding   is   fun  ",
+    "one",
+    ""
+]
+
+for i, test in enumerate(test_cases):
+    reversed_str = reverse_words(test)
+    print(f"Test case {i+1}: \"{test}\" => \"{reversed_str}\"")
