@@ -1,0 +1,36 @@
+def generate_sequence(M, N, K):
+    if K == 0:
+        return []
+
+    sequence = []
+    current = M
+    if K > 0:
+        while current <= N:
+            sequence.append(current)
+            current += K
+    else:
+        while current >= N:
+            sequence.append(current)
+            current += K
+
+    return sequence
+
+# Sample Input
+M = 50
+N = 100
+K = 7
+sequence = generate_sequence(M, N, K)
+print(", ".join(map(str, sequence)))
+
+# Test cases
+test_cases = [
+    (15, 5, 2),
+    (25, 50, 4),
+    (15, 100, -2),
+    (0, 0, 2),
+    (200, 200, 50)
+]
+
+for i, (M, N, K) in enumerate(test_cases):
+    sequence = generate_sequence(M, N, K)
+    print(f"Test case {i+1}: {', '.join(map(str, sequence))}")
