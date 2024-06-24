@@ -1,0 +1,52 @@
+def is_prime(n):
+    """Check if a number is prime."""
+    if n <= 1:
+        return False
+    if n == 2:
+        return True
+    if n % 2 == 0:
+        return False
+    max_divisor = int(n**0.5) + 1
+    for d in range(3, max_divisor, 2):
+        if n % d == 0:
+            return False
+    return True
+
+def classify_numbers(input_str):
+    """Classify numbers in the input string as prime or composite."""
+    composite_count = 0
+    prime_count = 0
+
+    # Replace common delimiters with space and split the string into tokens
+    tokens = input_str.replace(',', ' ').replace('-', ' ').replace('T', ' ').replace('F', ' ').replace('S', ' ').replace('N', ' ').replace('V', ' ').replace('Y', ' ').replace('E', ' ').replace('R', ' ').split()
+    
+    for token in tokens:
+        try:
+            num = int(token)
+            if num > 1:  # Only consider positive integers greater than 1 for prime/composite classification
+                if is_prime(num):
+                    prime_count += 1
+                else:
+                    composite_count += 1
+        except ValueError:
+            pass  # Ignore tokens that cannot be converted to integers
+
+    return composite_count, prime_count
+
+# Sample Input
+input_str = "4, 54 29 71 7 59 98 23"
+composite_count, prime_count = classify_numbers(input_str)
+print(f"Composite number: {composite_count} Prime number: {prime_count}")
+
+# Test cases
+test_cases = [
+    "33, 41, 52, 61, 73, 90",
+    "TEN, FIFTY, SIXTY-ONE, SEVENTY-SEVEN, NINE",
+    "45, 87, 09, 5.0 ,2.3, 0.4",
+    "-54, -76, -97, -23, -33, -98",
+    "45, 73, 00, 50, 67, 44"
+]
+
+for i, test in enumerate(test_cases):
+    composite_count, prime_count = classify_numbers(test)
+    print(f"Test case {i+1}: Composite number: {composite_count} Prime number: {prime_count}")
