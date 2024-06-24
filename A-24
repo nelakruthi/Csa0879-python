@@ -1,0 +1,38 @@
+def calculate_averages():
+    positive_sum = 0
+    positive_count = 0
+    negative_sum = 0
+    negative_count = 0
+
+    while True:
+        try:
+            num = float(input("Enter the number (enter -1 to exit): "))
+            if num == -1:
+                break
+            elif num > 0:
+                positive_sum += num
+                positive_count += 1
+            elif num < 0:
+                negative_sum += num
+                negative_count += 1
+        except ValueError:
+            print("Invalid input. Please enter a valid number.")
+
+    if positive_count > 0:
+        average_positive = positive_sum / positive_count
+        print(f"The average of positive numbers is: {average_positive}")
+    else:
+        print("No positive numbers were entered.")
+
+    if negative_count > 0:
+        average_negative = negative_sum / negative_count
+        print(f"The average of negative numbers is: {average_negative}")
+    else:
+        print("No negative numbers were entered.")
+
+def main():
+    print("Enter -1 to exit...")
+    calculate_averages()
+
+if __name__ == "__main__":
+    main()
