@@ -1,0 +1,27 @@
+def perform_operation(X, N, choice):
+    if choice == 1:
+        result = X + N
+        operation = "Add"
+    elif choice == 2:
+        result = X * N
+        operation = "Multiply"
+    else:
+        raise ValueError("Invalid choice. Please choose 1 for addition or 2 for multiplication.")
+
+    return result, operation
+
+def main():
+    # Get inputs from the user
+    X = int(input("Enter value for X: "))
+    N = int(input("Enter value for N: "))
+    choice = int(input("Enter your choice (1 for addition, 2 for multiplication): "))
+
+    # Perform the operation
+    try:
+        result, operation = perform_operation(X, N, choice)
+        print(f"{operation}(X,N) = {result}")
+    except ValueError as e:
+        print(e)
+
+if __name__ == "__main__":
+    main()
