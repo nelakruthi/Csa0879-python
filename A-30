@@ -1,0 +1,44 @@
+def calculate_sums(matrix):
+    num_rows = len(matrix)
+    num_cols = len(matrix[0])
+
+    # Initialize sums
+    row_sums = [0] * num_rows
+    col_sums = [0] * num_cols
+    diag_sum1 = 0
+    diag_sum2 = 0
+
+    # Calculate row sums and column sums
+    for i in range(num_rows):
+        for j in range(num_cols):
+            row_sums[i] += matrix[i][j]
+            col_sums[j] += matrix[i][j]
+            if i == j:
+                diag_sum1 += matrix[i][j]
+            if i + j == num_rows - 1:
+                diag_sum2 += matrix[i][j]
+
+    return row_sums, col_sums, diag_sum1, diag_sum2
+
+# Test matrix
+a = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+# Calculate sums
+row_sums, col_sums, diag_sum1, diag_sum2 = calculate_sums(a)
+
+# Print row sums
+for i, row_sum in enumerate(row_sums, start=1):
+    print(f"Sum of {i} row: {row_sum}")
+
+# Print column sums
+for j, col_sum in enumerate(col_sums, start=1):
+    print(f"Sum of {j} column: {col_sum}")
+
+# Print diagonal sums
+print(f"Diagonal sum: {diag_sum1}")
+
+# Assuming that the "Diagonal sum" refers to the main diagonal only.
