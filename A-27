@@ -1,0 +1,18 @@
+def calculate_tax(income):
+    if income <= 150000:
+        tax = 0
+    elif income <= 300000:
+        tax = (income - 150000) * 0.10
+    elif income <= 500000:
+        tax = (income - 300000) * 0.20 + 15000  # 15000 is the tax for the first slab (150000 to 300000)
+    else:
+        tax = (income - 500000) * 0.30 + 15000 + 40000  # 15000 for the first slab, 40000 for the second slab
+
+    return tax
+
+# Test cases
+test_cases = [200000, 400700, 2789239, 150000, 0, -125486]
+
+for income in test_cases:
+    tax = calculate_tax(income)
+    print(f"Income: {income}, Tax: {tax}")
