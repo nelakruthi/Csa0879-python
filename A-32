@@ -1,0 +1,33 @@
+def calculate_student_users(total_users, staff_users):
+    if total_users < 0 or staff_users < 0:
+        return "Invalid input: Total users and staff users cannot be negative."
+    
+    non_teaching_staff_users = staff_users // 3
+    total_staff = staff_users + non_teaching_staff_users
+    
+    if total_users < total_staff:
+        return "Invalid input: Total users cannot be less than total staff (staff + non-teaching staff)."
+    
+    student_users = total_users - total_staff
+    return student_users
+
+# Sample Input
+total_users = 856
+staff_users = 126
+
+# Calculate and print student users
+student_users = calculate_student_users(total_users, staff_users)
+print(f"Student Users: {student_users}")
+
+# Test Cases
+test_cases = [
+    (0, 0),            # Total Users: 0
+    (-143, 0),         # Total Users: -143
+    (1026, 1026),      # Total Users: 1026, Staff Users: 1026
+    (450, 540),        # Total Users: 450, Staff Users: 540
+    (600, 450)         # Total Users: 600, Staff Users: 450
+]
+
+for idx, (total, staff) in enumerate(test_cases, start=1):
+    student_users = calculate_student_users(total, staff)
+    print(f"Test case {idx}: Total Users: {total}, Staff Users: {staff} -> Student Users: {student_users}")
