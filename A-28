@@ -1,0 +1,37 @@
+def count_file_contents(filename):
+    vowels = "aeiouAEIOU"
+    num_spaces = 0
+    num_lines = 0
+    num_vowels = 0
+    num_consonants = 0
+    
+    with open(filename, 'r') as file:
+        for line in file:
+            num_lines += 1
+            for char in line:
+                if char.isspace():
+                    if char == ' ':
+                        num_spaces += 1
+                elif char.isalpha():
+                    if char in vowels:
+                        num_vowels += 1
+                    else:
+                        num_consonants += 1
+
+    return num_spaces, num_lines, num_vowels, num_consonants
+
+# Test case
+filename = "Hello.txt"
+
+# Write the test case content to the file
+with open(filename, 'w') as file:
+    file.write("Welcome to saveetha School of Engineering\n")
+
+# Count the contents
+num_spaces, num_lines, num_vowels, num_consonants = count_file_contents(filename)
+
+# Print the results
+print(f"Number of spaces = {num_spaces}")
+print(f"Number of lines = {num_lines}")
+print(f"Number of vowels = {num_vowels}")
+print(f"Number of consonants = {num_consonants}")
