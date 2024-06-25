@@ -1,0 +1,51 @@
+def is_leap_year(year):
+    if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):
+        return True
+    return False
+
+def validate_date(date_str):
+    try:
+        day, month, year = map(int, date_str.split('/'))
+        if day < 1 or day > 31 or month < 1 or month > 12:
+            return False, None
+        return True, year
+    except ValueError:
+        return False, None
+
+def main():
+    date_str = input("Enter Date (dd/mm/yyyy): ")
+    valid, year = validate_date(date_str)
+    
+    if not valid:
+        print("Invalid date format or values.")
+        return
+
+    if is_leap_year(year):
+        print("Given year is Leap Year")
+    else:
+        print("Given year is Non Leap Year")
+
+# Sample Input
+main()
+
+# Test cases
+test_cases = [
+    "04/11/19.47",
+    "11/15/1936",
+    "31/45/1996",
+    "64/09/1947",
+    "00/00/2000"
+]
+
+for date_str in test_cases:
+    print(f"Test case: {date_str}")
+    valid, year = validate_date(date_str)
+    
+    if not valid:
+        print("Invalid date format or values.")
+    else:
+        if is_leap_year(year):
+            print("Given year is Leap Year")
+        else:
+            print("Given year is Non Leap Year")
+    print()
