@@ -1,0 +1,28 @@
+import numpy as np
+from scipy import stats
+
+def calculate_statistics(arr):
+    mean = np.mean(arr)
+    median = np.median(arr)
+    mode = stats.mode(arr)[0][0]  # Extract the mode value from the ModeResult object
+    
+    return mean, median, mode
+
+# Test cases
+test_cases = [
+    [16, 18, 27, 16, 23, 21, 19],
+    [26, 28, 37, 26, 33, 31, 29],
+    [1.6, 1.8, 2.7, 1.6, 2.3, 2.1, 0.19],
+    [0, 160, 180, 270, 160, 230, 210, 190, 0],
+    [20, 18, 18, 27, 16, 27, 27, 19, 20],
+    [1000, 100, 1000, 100, 1000, 100, 1000, 100, 1000]
+]
+
+for idx, arr in enumerate(test_cases, start=1):
+    mean, median, mode = calculate_statistics(arr)
+    print(f"Test case {idx}:")
+    print(f"Array of elements = {arr}")
+    print(f"Mean = {mean}")
+    print(f"Median = {median}")
+    print(f"Mode = {mode}")
+    print()
