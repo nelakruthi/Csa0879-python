@@ -1,0 +1,79 @@
+def is_leap_year(year):
+    """Returns True if the year is a leap year, else False."""
+    return (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0)
+
+def validate_date(date_str):
+    """Validates the date format and returns the year if valid, otherwise returns None."""
+    try:
+        day, month, year = map(int, date_str.split('/'))
+        if 1 <= day <= 31 and 1 <= month <= 12:
+            return year
+    except ValueError:
+        pass
+    return None
+
+def analyze_string(input_str):
+    """Analyzes a string to count vowels, consonants, digits, and special characters."""
+    vowels = "aeiouAEIOU"
+    num_vowels = num_consonants = num_digits = num_special_chars = 0
+
+    for char in input_str:
+        if char.isdigit():
+            num_digits += 1
+        elif char.isalpha():
+            if char in vowels:
+                num_vowels += 1
+            else:
+                num_consonants += 1
+        else:
+            num_special_chars += 1
+    
+    return num_vowels, num_consonants, num_digits, num_special_chars
+
+def main():
+    input_str = input("Enter input: ")
+
+    # First, check if the input is a date
+    year = validate_date(input_str)
+    if year is not None:
+        if is_leap_year(year):
+            print("Given year is Leap Year")
+        else:
+            print("Given year is Non Leap Year")
+    else:
+        # Analyze the string for vowels, consonants, digits, and special characters
+        num_vowels, num_consonants, num_digits, num_special_chars = analyze_string(input_str)
+        print(f"Vowels: {num_vowels}")
+        print(f"Consonants: {num_consonants}")
+        print(f"Digits: {num_digits}")
+        print(f"Special Characters: {num_special_chars}")
+
+# Run the main function
+main()
+
+# Test cases
+test_cases = [
+    "04/11/1947",   # Valid date, non-leap year
+    "04/11/19.47",  # Invalid date format
+    "11/15/1936",   # Invalid date (month 15)
+    "31/45/1996",   # Invalid date (month 45)
+    "64/09/1947",   # Invalid date (day 64)
+    "00/00/2000",   # Invalid date (day 00, month 00)
+    "Welcome to &^23(&@ SSE"  # String with special characters
+]
+
+for test in test_cases:
+    print(f"Test case: {test}")
+    year = validate_date(test)
+    if year is not None:
+        if is_leap_year(year):
+            print("Given year is Leap Year")
+        else:
+            print("Given year is Non Leap Year")
+    else:
+        num_vowels, num_consonants, num_digits, num_special_chars = analyze_string(test)
+        print(f"Vowels: {num_vowels}")
+        print(f"Consonants: {num_consonants}")
+        print(f"Digits: {num_digits}")
+        print(f"Special Characters: {num_special_chars}")
+    print()
