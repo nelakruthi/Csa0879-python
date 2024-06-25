@@ -1,0 +1,59 @@
+def calculate_grade(aggregate):
+    if aggregate > 75:
+        return "DISTINCTION"
+    elif 60 <= aggregate <= 75:
+        return "First Division"
+    elif 50 <= aggregate < 60:
+        return "Second Division"
+    elif 40 <= aggregate < 50:
+        return "Third Division"
+    else:
+        return "Fail"
+
+def main():
+    subjects = ["python", "c programming", "Mathematics", "Physics"]
+    marks = []
+
+    for subject in subjects:
+        while True:
+            try:
+                mark = float(input(f"Enter the marks in {subject}: "))
+                if mark < 0 or mark > 100:
+                    raise ValueError("Marks should be between 0 and 100.")
+                marks.append(mark)
+                break
+            except ValueError as e:
+                print(e)
+
+    total = sum(marks)
+    aggregate = total / len(subjects)
+
+    print(f"Total = {total}")
+    print(f"Aggregate = {aggregate:.2f}")
+    print(calculate_grade(aggregate))
+
+# Sample Input & Output
+main()
+
+# Test cases
+test_cases = [
+    [18, 76, 93, 65],
+    [73, 78, 79, 75],
+    [98, 106, 120, 95],
+    [96, 73, -85, 95],
+    [78, 59.8, 76, 79]
+]
+
+for idx, marks in enumerate(test_cases, start=1):
+    print(f"\nTest case {idx}: {marks}")
+    try:
+        if any(mark < 0 or mark > 100 for mark in marks):
+            raise ValueError("Marks should be between 0 and 100.")
+        total = sum(marks)
+        aggregate = total / len(marks)
+        grade = calculate_grade(aggregate)
+        print(f"Total = {total}")
+        print(f"Aggregate = {aggregate:.2f}")
+        print(f"Grade = {grade}")
+    except ValueError as e:
+        print(e)
